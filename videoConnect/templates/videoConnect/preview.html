@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Virtue</title>
+    <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/preview.css' %}">
+</head>
+<body>
+    <div class="row" id="main-screen">
+    <div class="col-6" style="background-color: #e8c3b9;">
+        <h1 class="ml15" style="text-align: center;">
+            <span class="word">Virtue</span>
+            <span class="word" style="font-size: medium;">Let's get you connected</span>
+          </h1>
+    </div>
+    <div class="col-6" style="margin-top: 5%;">
+        <!-- <div class="row"> -->
+            <div class="col-12">
+            <div id="video-box">
+                    <div>
+                        <video id="local-video" autoplay playsinline muted></video>
+                        <canvas id='blur-canvas'></canvas>
+                    </div>
+                    <div style="margin-top: 10px;" class="video-buttons">
+                        <button id = "toggle-audio-button" class="circular ui icon button">Mute</button>
+                        <button id = "toggle-video-button" class="circular ui icon button">Video off</button>
+                    </div>
+            </div>
+            </div>
+        <!-- </div> -->
+    <center style="margin-top:2%; padding-bottom: 5%;">
+        <!-- <h3 id="label-username">Please enter your username and room name that you want to join</h3> -->
+        <div class="col-6">
+            <form id="preview-form" method="POST" action="" class="ui form">
+                {% csrf_token %}
+            <!-- <div class="two fields"> -->
+                <div class="field">
+                    <label class="float-left">Email</label>
+                    <input id="email" name='email' placeholder="Email"/>
+                </div>
+            <div><button id="btn-join" class="circular ui icon button">Enter Virtue</button></div>
+            </form>
+        </div>
+        {% if error %}
+        <p>{{error}}</p>
+        {% endif %}
+    </center>
+    </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/preview.js' %}"></script>
+</body>
+</html>

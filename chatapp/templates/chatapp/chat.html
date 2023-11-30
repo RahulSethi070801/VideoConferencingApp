@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Virtue</title>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static 'css/chat.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="{% static 'css/semantic.min.css' %}"> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/icon.min.css" integrity="sha512-8Tb+T7SKUFQWOPIQCaLDWWe1K/SY8hvHl7brOH8Nz5z1VT8fnf8B+9neoUzmFY3OzkWMMs3OjrwZALgB1oXFBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <script type="text/javascript" src="{% static 'js/semantic.min.js' %}"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
+
+</head>
+<body style="background-color: #f3f6ff;">
+    <div class="container-fluid h-100">
+        <div class="row justify-content-center h-100" style="align-items: center; height: 90%;">
+            <div class="col-10" style="height: 90%;">
+            <div class="logo">
+            <div class="row justify-content-center h-100">
+            <div class="col-1 logo-style">
+                <span class="logo-word">V</span>
+                <span class="logo-word">I</span>
+                <span class="logo-word">R</span>
+                <span class="logo-word">T</span>
+                <span class="logo-word">U</span>
+                <span class="logo-word">E</span>
+            </div>
+            <div class="col-3 chat"><div class="card mb-sm-3 mb-md-0 contacts_card">
+                <div class="create-meeting" onclick="create_meeting()">
+                    <div class="icon-box">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" style="margin-top: 10px;" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                            <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
+                          </svg>
+                    </div>
+                    <span>Create Room</span>
+                    <!-- <button class="ui animated button" style="float: right;" onclick="create_meeting()">
+                        <div class="visible content">Create Room</div>
+                        <div class="hidden content">Join Virtue</div>
+                    </button> -->
+                </div>
+                <div class="card-header">
+                    <span style="color: black;">Chat</span>
+                    <!-- <button class="ui animated button" style="float: right;" onclick="create_meeting()">
+                        <div class="visible content">Create Room</div>
+                        <div class="hidden content">Join Virtue</div>
+                    </button> -->
+                </div>
+                <div class="card-body contacts_body">
+                    <ui class="contacts">
+                    {% for i in details %}
+                    <li id = "{{i.secret}}-name">
+                        <button  class="ui button list-button" id = "{{i.secret}}" onclick="connect(this.id)">
+                            <div class="d-flex bd-highlight">
+                                <div class="user_info_header">
+                                    <div class="contact-circle">{{i.roomName.0}}{{i.roomName.1}}</div>
+                                    <div style="display: inline-block; vertical-align: middle;">
+                                        <span>{{i.roomName}}</span>
+                                        <p>created by {{i.author}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
+                    </li>
+                    {% endfor %}
+                    </ui>
+                </div>
+            </div>
+            </div>
+            <div class="col-7 chat">
+                {% if details|length > 0 %}
+                {% for i in details %}
+                <div id='{{i.secret}}-chat' hidden class="card chat-card">
+                    <div class="card-header msg_head">
+                        <div class="d-flex bd-highlight">
+                            <div class="user_info">
+                                <div class="contact-circle">{{i.roomName.0}}{{i.roomName.1}}</div>
+                                <div style="display: inline-block; vertical-align: middle;">
+                                    <span>{{i.roomName}}</span>
+                                    <div>
+                                        {% if i.isActive %}
+                                        <img height="10px" src="https://img.icons8.com/emoji/48/000000/green-circle-emoji.png"/>
+                                        <p>Active</p>
+                                        {% else %}
+                                        <img height="10px" src="https://img.icons8.com/emoji/48/000000/red-circle-emoji.png"/>
+                                        <p>Inactive</p>
+                                        {% endif %}
+                                    </div>
+                                <!-- <p>1767 Messages</p> -->
+                                </div>
+                            </div>
+                            <div class="video_cam">
+                                <a style="margin: auto;" class="ui button room_join_button" href="/join/{{i.secret}}?&email={{email}}">Join Room</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div id='{{i.secret}}-msg-box' class="card-body msg_card_body">
+                        {% for x in i.messages %}
+                        {% if x.email == email %}
+                        <div class="d-flex justify-content-start mb-4">
+                            <div class="msg_cotainer_send" data-toggle="tooltip" title="{{x.email}}">
+                                {{x.message}}
+                        {% else %}
+                        <div class="d-flex justify-content-end mb-4">
+                            <div class="msg_cotainer" data-toggle="tooltip" data-placement="right" title="{{x.email}}">
+                                {{x.message}}
+                        {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div> 
+                    <div class="card-footer">
+                        <div class="input-group">
+                            <input name="" maxlength="100" id='{{i.secret}}-text_area' class="form-control type_msg" placeholder="Type your message..."></input>
+                            <div class="input-group-append">
+                                <p hidden id="csrf">{{csrf_token}}</p>
+                                <span id='{{i.secret}}-send_btn' class="input-group-text send_btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+                                      </svg>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="card chat-card">
+                    <div class="align-chat" onclick="create_meeting()">
+                    <div class="new-chat">
+                        <div class="icon-box2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" style="margin-top: 20px;" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
+                            </svg>
+                        </div>
+                        <p style="margin: 5px;">No rooms yet</p>
+                        <p style="font-size: larger;">Create a new room!</p>
+                    </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div id="nameModal" hidden class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content modal-lg">
+            <div class="modal-body">
+                <form class="ui form" id='name-form'>
+                    {% csrf_token %}
+                    <div class="required field">
+                        <label>Name</label>
+                        <input id='name' name = "name" placeholder="Name">
+                    </div>
+                    <button class="ui submit button">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="roomModal" hidden class="modal">
+        
+        <!-- Modal content -->
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h2 class="modal-title">Create a new room</h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form class="ui form" id='room-form'>
+                    {% csrf_token %}
+                    <div class="required field">
+                        <label>Room Name</label>
+                        <input id='roomname' name = "roomname" placeholder="Room Name">
+                    </div>
+                    <div class="field">
+                        <label>Invite Friends (Please enter comma separated emails)</label>
+                        <input id='invite-friends' name="invite-friends" placeholder="Emails">
+                    </div>
+                    <button class="ui submit button">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% if nameUser %}
+    {{nameUser|json_script:"nameUser"}}
+    {% endif %}
+    {{ email|json_script:"passed"}}                  
+    <script type="text/javascript" src="{% static 'js/chat.js' %}"></script>
+</body>
+</html>

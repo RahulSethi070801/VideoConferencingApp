@@ -1,0 +1,50 @@
+.row{
+    height: 100vh;
+    width: 100vw;
+}
+
+#video-box{
+    width: 400px;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+#local-video{
+    position: absolute;
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+    transform: scaleX(-1);
+}
+
+#blur-canvas{
+    position: absolute;
+}
+
+.video-buttons{
+    position: absolute;
+    padding-left: 30%;
+    padding-top: 60%;
+}
+
+.ml15 {
+    position: absolute;
+    top:40vh;
+    /* left: 0; */
+    right: 0;
+    bottom: 0;
+    margin-left: 20px;
+    font-weight: 800;
+    font-size: 3.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+  
+.ml15 .word {
+    display: inline-block;
+    line-height: 1em;
+}

@@ -1,0 +1,336 @@
+body {
+  height: 100%;
+  width: 100%;
+  font-family: helvetica, arial, sans-serif;
+  color: #3D3D3D;
+}
+
+html{
+  height: 100%;
+}
+
+#main-screen{
+  height: 100%;
+  background-color: #f3f6ff;
+  /* display: flex;
+  justify-content: center; */
+}
+
+#video-box{
+  /* display: grid;
+  grid-template-columns: repeat(3, 1fr); */
+  /* -ms-grid-columns: (1fr)[3];
+            grid-template-columns: repeat(1, 1fr);
+            -ms-grid-rows: (1fr)[2];
+            grid-template-rows: repeat(1, 1fr);   */
+  display: -ms-grid;
+  display: grid;
+  height: 82%;
+  padding-top: calc(2%);
+  /* grid-gap: 10px; */
+}
+
+#video-box > #inner{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
+
+.video-style{
+  border-radius: 10px;
+  object-fit: cover;
+  position: absolute;
+  max-width: calc(70%);
+  max-height: calc(80%);
+}
+
+/* .video-style{
+  background-color: #eee;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  text-align: center;
+} */
+
+/* #local-video{
+  position: absolute;
+  border-radius: 10px;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: -1;
+} */
+
+#local-video{
+  transform: scaleX(-1);
+}
+
+.buttons-layout{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.video-buttons{
+  position: absolute;
+  bottom: 0;
+  width: 70%;
+  /* height: 15%; */
+  background-color: #a5b1cb;
+  text-align: center;
+  /* padding-top: 30px; */
+  /* padding-bottom: 1%; */
+  padding:10px;
+  margin-bottom: calc(1%);
+  z-index: 100;
+  border-radius: 10px;
+}
+
+.button-div{
+  display: inline-block;
+  margin: 0 10px 0 10px;
+  font-family: 'Lato', sans-serif;
+}
+
+.sidepanel {
+  height: 97%; /* Specify a height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 150; /* Stay on top */
+  top: 0;
+  right: 0;
+  /* background-color: #e8c3b9; */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
+  border-radius: 10px;
+  margin: 10px;
+  background-color: #3D3D3D;
+}
+
+.sidepanel h3{
+  color: white;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  margin: 10px !important;
+}
+
+/* The sidepanel links */
+.sidepanel a {
+  padding: 8px 8px 8px 8px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidepanel a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidepanel .closebtn {
+  margin: 6px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 36px;
+  /* margin-left: 50px; */
+}
+
+.open-chat-button{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-bottom: calc(1.5%);
+  text-align: center;
+}
+
+/* Style the button that is used to open the sidepanel */
+.openbtn {
+  /* font-size: 20px; */
+  /* cursor: pointer; */
+  color: white;
+  /* position: absolute;
+  bottom: 0;
+  right: 0; */
+  /* margin-right: 10px !important;  */
+  margin-bottom: 1% !important;
+  z-index: 100;
+  /* padding: 10px 15px; */
+  /* border: none; */
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#messages{
+  height: 87%;
+  overflow: auto;
+}
+
+#messages li{
+  color: white;
+}
+
+.send-message{
+  position: absolute;
+  bottom: 0;
+  margin:5px;
+  width: 100%;
+}
+
+#send-msg-button{
+  position: absolute;
+  right: 5px;
+  top: 25%;
+  border: none;
+  margin-right: 10px;
+  background-color: white;
+  border-radius: 20px;
+}
+#send-msg-button:hover{
+  cursor: pointer;
+}
+
+#message{
+  border-radius: 10px;
+  border: 0;
+  width: 96%;
+  height: 40px;
+}
+
+#message:focus{
+  outline: none;
+}
+
+.msg_cotainer{
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 10px;
+  border-radius: 25px;
+  background-color: #f36bab;
+  color: white;
+  padding: 10px;
+  position: relative;
+}
+.msg_cotainer_send{
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 10px;
+  border-radius: 25px;
+  background-color: #2154be;
+  color: white;
+  padding: 10px;
+  position: relative;
+}
+
+.ml13 {
+  position: absolute;
+  top: 45vh;
+  left: 37vw;
+  font-size: 1.9em;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  font-weight: 600;
+  z-index: 5500;
+  color: white;
+}
+
+.ml13 .letter {
+  display: inline-block;
+  line-height: 1em;
+}
+
+#ml4{
+  display: block;
+  height: 100vh;
+  width: 100vw;
+  background-color: #1a1a1a;
+}
+
+.ml4 {
+  position: relative;
+  font-weight: 900;
+  font-size: 4.5em;
+}
+.ml4 .letters {
+  position: absolute;
+  margin: auto;
+  left: 45vw;
+  top: 45vh;
+  opacity: 0;
+  color: white;
+}
+
+.blur-background {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 5000;
+}
+
+#blur-canvas{
+  border-radius: 10px;
+  object-fit: cover;
+  max-height: 87%;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.chat-header{
+  width: 100%;
+  top: 0;
+  z-index: 100;
+}
